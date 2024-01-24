@@ -30,7 +30,6 @@ function createMap(earthquakes) {
         const div = L.DomUtil.create("div", "info legend");
         const depth = [-10, 10, 30, 50, 70, 90];
 
-        // Add squares representing the colors
         for (let i = 0; i < depth.length - 1; i++) {
             const colorSquare = L.DomUtil.create("div", "color-square");
             colorSquare.style.backgroundColor = chooseColor(depth[i] + 1);
@@ -38,16 +37,14 @@ function createMap(earthquakes) {
             div.appendChild(colorSquare);
         }
 
-        // Set background color, width, and padding
         div.style.backgroundColor = 'white';
-        div.style.width = '100px';  // Adjust the width as needed
-        div.style.height = '150px';  // Adjust the width as needed
-        div.style.padding = '10px';  // Adjust the padding as needed
+        div.style.width = '100px';  
+        div.style.height = '150px';  
+        div.style.padding = '10px';  
 
         return div;
     };
 
-    // Increase the font size
     const legendContainer = legend.addTo(myMap).getContainer();
     legendContainer.style.fontSize = '20px';
 }
@@ -76,7 +73,6 @@ function createFeatures(earthquakeData) {
     createMap(earthquakes);
 }
 
-// Perform a GET request to the query URL
 d3.json(url).then(function (data) {
     console.log(data);
     createFeatures(data.features);
